@@ -8,10 +8,8 @@ def is_empty(board):
 
 
 def is_bounded(board, y_end, x_end, length, d_y, d_x):
-    ''''This function analyses the sequence of length length that ends at location (y end, x end). The function returns "OPEN" if the sequence is open, "SEMIOPEN" if the sequence if semi-open, and "CLOSED"
-if the sequence is closed.
-Assume that the sequence is complete (i.e., you are not just given a subsequence) and valid, and
-contains stones of only one colour.'''
+    ''''This function analyses the sequence of length length that ends at location (y end, x end). The function returns "OPEN" if the sequence is open, 
+    "SEMIOPEN" if the sequence if semi-open, and "CLOSED" if the sequence is closed.'''
 
 
     if d_y == 0 and d_x == 1:
@@ -118,16 +116,10 @@ contains stones of only one colour.'''
 
 
 def detect_row(board, col, y_start, x_start, length, d_y, d_x):
-    ''''This function analyses the row (letâ€™s call it R) of squares that starts at the location (y start,x start)
-and goes in the direction (d y,d x). Note that this use of the word row is different from â€œa row in
-a tableâ€. Here the word row means a sequence of squares, which are adjacent either horizontally,
-or vertically, or diagonally. The function returns a tuple whose first element is the number of open
+    ''''This function analyses the row of squares that starts at the location (y start,x start)
+and goes in the direction (d y,d x). The function returns a tuple whose first element is the number of open
 sequences of colour col of length length in the row R, and whose second element is the number of
-semi-open sequences of colour col of length length in the row R.
-Assume that (y start,x start) is located on the edge of the board. Only complete sequences count.
-For example, column 1 in Fig. 1 is considered to contain one open row of length 3, and no other
-rows.
-Assume length is an integer greater or equal to 2.''' 
+semi-open sequences of colour col of length length in the row R.''' 
     open_seq_count = 0
     semi_open_seq_count = 0
 
@@ -222,10 +214,7 @@ Assume length is an integer greater or equal to 2.'''
 def detect_rows(board, col, length):
     '''This function analyses the board board. The function returns a tuple, whose first element is the
 number of open sequences of colour col of length lengthon the entire board, and whose second
-element is the number of semi-open sequences of colour col of length length on the entire board.
-Only complete sequences count. For example, Fig. 1 is considered to contain one open row of length
-3, and no other rows.
-Assume length is an integer greater or equal to 2.'''
+element is the number of semi-open sequences of colour col of length length on the entire board.'''
     open_seq_count, semi_open_seq_count = 0, 0
     open_seq_count1, semi_open_seq_count1 = 0, 0
     open_seq_count2, semi_open_seq_count2 = 0, 0
@@ -264,11 +253,10 @@ Assume length is an integer greater or equal to 2.'''
     return open_seq_count, semi_open_seq_count
 
 def search_max(board):
-    '''This function uses the function score() (provided) to find the optimal move for black. It finds the
+    '''This function uses the function score() to find the optimal move for black. It finds the
 location (y,x), such that (y,x) is empty and putting a black stone on (y,x) maximizes the score of
 the board as calculated by score(). The function returns a tuple (y, x) such that putting a black
-stone in coordinates (y, x) maximizes the potential score (if there are several such tuples, you can
-return any one of them). After the function returns, the contents of board must remain the same.'''
+stone in coordinates (y, x) maximizes the potential score.'''
     score_dict = {}
     for i in range(0, len(board)):
         for j in range(0, len(board[0])):
@@ -494,7 +482,7 @@ def analysis(board):
 
 
 def play_gomoku(board_size):
-    ''' this function allows the user to play against a computer on a board of size. This function interacts with the AI engine by calling the function searchMax() which you will write'''
+    ''' this function allows the user to play against a computer on a board of size. This function interacts with the AI engine by calling the function searchMax()'''
     board = make_empty_board(board_size)
     board_height = len(board)
     board_width = len(board[0])
